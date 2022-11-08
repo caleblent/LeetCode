@@ -3,7 +3,7 @@ package thePackage;
 public class TwoSum2InputArrayIsSorted {
 
 	public static Integer mid_;
-	public static Integer index;
+//	public static Integer index_;
 
 	public static int[] twoSum(int[] numbers, int target) {
 		for (int i = 0; i < numbers.length; i++) {
@@ -33,28 +33,28 @@ public class TwoSum2InputArrayIsSorted {
 		return null;
 	}
 
-	public static int[] twoSum_notQuite(int[] numbers, int target) {
-		for (int i = 0; i < numbers.length; i++) {
-			index = i;
-			int low = i + 1, high = numbers.length - 1;
-			while (low <= high) {
-				mid_ = low + (high - low) / 2;
-
-				if (numbers[i] + numbers[mid_] < target)
-					high = mid_ - 1;
-
-				else if (numbers[i] + numbers[mid_] > target)
-					low = mid_ + 1;
-
-				else // (numbers[i] + numbers[mid] == target)
-					return new int[] { i + 1, mid_ + 1 };
-			}
-
-			if (numbers[i] + numbers[mid_] == target)
-				return new int[] { i + 1, mid_ + 1 };
-		}
-		return new int[] { index + 1, mid_ + 1 };
-	}
+//	public static int[] twoSum_notQuite(int[] numbers, int target) {
+//		for (int i = 0; i < numbers.length; i++) {
+//			index_ = i;
+//			int low = i + 1, high = numbers.length - 1;
+//			while (low <= high) {
+//				mid_ = low + (high - low) / 2;
+//
+//				if (numbers[i] + numbers[mid_] < target)
+//					high = mid_ - 1;
+//
+//				else if (numbers[i] + numbers[mid_] > target)
+//					low = mid_ + 1;
+//
+//				else // (numbers[i] + numbers[mid] == target)
+//					return new int[] { i + 1, mid_ + 1 };
+//			}
+//
+//			if (numbers[i] + numbers[mid_] == target)
+//				return new int[] { i + 1, mid_ + 1 };
+//		}
+//		return new int[] { index_ + 1, mid_ + 1 };
+//	}
 
 	public static int search(int[] nums, int target) {
 		int low = 0, high = nums.length - 1;
