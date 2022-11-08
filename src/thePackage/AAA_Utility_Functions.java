@@ -3,10 +3,12 @@ package thePackage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AAA_Utility_Functions {
-	
-	/* -------------------- ALGORITHMS -----------------------*/
+import thePackage.LinkedListCycle.ListNode;
 
+public class AAA_Utility_Functions {
+	/* -------------------------------------------------------*/
+	/* -------------------- ALGORITHMS -----------------------*/
+	/* -------------------------------------------------------*/
 	// Binary Search
 	public static int binarySearch(int[] nums, int target) {
 		int low = 0, high = nums.length - 1;
@@ -57,6 +59,35 @@ public class AAA_Utility_Functions {
 		return i + 1;
 	}
 	
+	public static void quickSort(char arr[], int begin, int end) {
+		if (begin < end) {
+			int partitionIndex = partition(arr, begin, end);
+
+			quickSort(arr, begin, partitionIndex - 1);
+			quickSort(arr, partitionIndex + 1, end);
+		}
+	}
+	private static int partition(char arr[], int begin, int end) {
+		int pivot = arr[end];
+		int i = (begin - 1);
+
+		for (int j = begin; j < end; j++) {
+			if (arr[j] <= pivot) {
+				i++;
+
+				char swapTemp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = swapTemp;
+			}
+		}
+
+		char swapTemp = arr[i + 1];
+		arr[i + 1] = arr[end];
+		arr[end] = swapTemp;
+
+		return i + 1;
+	}
+	
 	// Bubble Sort
 	public static void bubbleSort(int arr[]) {
 		int n = arr.length;
@@ -81,7 +112,24 @@ public class AAA_Utility_Functions {
 		return max;
 	}
 	
+	/* ------------------------------------------------------------*/
+	/* -------------------- DATA STRUCTURES -----------------------*/
+	/* ------------------------------------------------------------*/
+	
+	/* ListNode class/object used for LeetCode problems involving linked nodes */
+	class ListNode {
+		int val;
+		ListNode next;
+
+		ListNode(int x) {
+			val = x;
+			next = null;
+		}
+	}
+	
+	/* ---------------------------------------------------------------*/
 	/* -------------------- ARRAY COPY METHODS -----------------------*/
+	/* ---------------------------------------------------------------*/
 	
 	public static char[] copyStringToCharArray(String s) {
 		char[] c = new char[s.length()];
@@ -113,7 +161,9 @@ public class AAA_Utility_Functions {
 		return a;
 	}
 	
+	/* ------------------------------------------------------------*/
 	/* -------------------- PRINT FUNCTIONS -----------------------*/
+	/* ------------------------------------------------------------*/
 	
 	public static void printInt(int[][] a) {
 		System.out.print("[\n");
@@ -163,13 +213,17 @@ public class AAA_Utility_Functions {
 		return ret;
 	}
 	
-	/* -------------------- MATHEMATICS -----------------------*/
+	/* -------------------------------------------------------------------*/
+	/* -------------------- MATHEMATICS OPEARTIONS -----------------------*/
+	/* -------------------------------------------------------------------*/
 		
 	public static int getSummation(int n) {
 		return n * (n + 1) / 2;
 	}
 	
+	/* ----------------------------------------------------------*/
 	/* -------------------- MISCELLANEOUS -----------------------*/
+	/* ----------------------------------------------------------*/
 	
 	public static String removeChar(String s, int index) {
 		String ret = "";
