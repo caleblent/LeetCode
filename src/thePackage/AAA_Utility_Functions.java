@@ -36,7 +36,6 @@ public class AAA_Utility_Functions {
 			quickSort(arr, partitionIndex + 1, end);
 		}
 	}
-	// Quick Sort
 	private static int partition(int arr[], int begin, int end) {
 		int pivot = arr[end];
 		int i = (begin - 1);
@@ -171,6 +170,17 @@ public class AAA_Utility_Functions {
 	}
 	
 	/* -------------------- MISCELLANEOUS -----------------------*/
+	
+	public static String removeChar(String s, int index) {
+		String ret = "";
+
+		for (int i = 0; i < s.length(); i++) {
+			if (i != index)
+				ret += s.charAt(i);
+		}
+
+		return ret;
+	}
 	
 	public static boolean isVowel(char c) {
 		if (c == 'a' ||	c == 'A' ||
