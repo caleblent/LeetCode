@@ -4,7 +4,19 @@ import java.util.ArrayList;
 
 public class RemoveLinkedListElements {
 	
-	public ListNode removeElements_dumbButPasses(ListNode head, int val) {
+	public ListNode removeElements_recursive(ListNode head, int val) {
+		if (head == null)
+			return null;
+		
+		head.next = removeElements_recursive(head.next, val);
+		
+		if (head.val == val)
+			return head.next;
+		else
+			return head;
+	}
+	
+	public ListNode removeElements_dumbButWorks(ListNode head, int val) {
 		
 		/* 1. copy linked list values into an ArrayList */
 		ArrayList<Integer> vals = new ArrayList<Integer>();
@@ -32,10 +44,17 @@ public class RemoveLinkedListElements {
 	class ListNode {
 		int val;
 		ListNode next;
+		
+		ListNode() {}
 
 		ListNode(int x) {
 			val = x;
 			next = null;
+		}
+		
+		ListNode(int x, ListNode n) {
+			val = x;
+			next = n;
 		}
 	}
 }
