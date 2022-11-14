@@ -21,7 +21,7 @@ public class ValidAnagram {
 				return false;
 		}
 		
-		// 4. if it hasn't returned yet, they just by anagrams
+		// 4. if it hasn't returned yet, they must be anagrams
 		return true;
     }
 	
