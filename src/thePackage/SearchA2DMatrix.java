@@ -9,6 +9,19 @@ public class SearchA2DMatrix {
 //		System.out.println(searchMatrix(test3, 3));
 //		System.out.println(searchMatrix(test3, 2));
 	}
+	
+	public static boolean searchMatrix_bruteForce(int[][] matrix, int target) {
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+				if (matrix[i][j] == target)
+					return true;
+				if (matrix[i][j] > target) // since it's sorted
+                    return false;
+			}
+		}
+		return false;
+	}
+	
 
 	public static boolean searchMatrix_worksButTooSlow(int[][] matrix, int target) {
 		int length = matrix.length;
