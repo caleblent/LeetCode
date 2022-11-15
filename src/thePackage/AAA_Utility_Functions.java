@@ -1,6 +1,7 @@
 package thePackage;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class AAA_Utility_Functions {
@@ -208,6 +209,13 @@ public class AAA_Utility_Functions {
 			}
 			System.out.print("\n");
 		}
+	}
+	
+	public static void printLinkedList(LinkedList<String> list) {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.print(list.get(i) + " ");
+		}
+		System.out.println();
 	}
 	
 	public static void printRows(List<List<Integer>> list) {
