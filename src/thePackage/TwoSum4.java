@@ -1,54 +1,43 @@
 package thePackage;
 
+import java.util.ArrayList;
+
 public class TwoSum4 {
+	
+	ArrayList<Integer> nums = new ArrayList<Integer>();
 
 	public boolean findTarget(TreeNode root, int k) {
 		// if root is null
 		if (root == null)
 			return false;
 		
-		// search entire tree for 2nd value
-		if (root.val * 2 != k) {
-			if (searchBST(root, k - root.val))
-				return true;
+		// add tree values to nums
+		inorder(root);
+		
+		// search through  the nums ArrayList to see if there is a sum that adds up to k
+		for (int i = 0; i < nums.size(); i++) {
+			for (int j = i + 1; j < nums.size(); j++) {
+				// if the sum of the 2 is k, return true
+				if (nums.get(i) + nums.get(j) == k)
+					return true;
+				// if the sum is > k, start over with a different i
+				if (nums.get(i) + nums.get(j) > k)
+					break;
+			}
 		}
 		
-		
-//		boolean left = false, right = false;
-//		
-//		// try again with the left subtree (if it exists)
-//		if (root.left != null)
-//			left = findTarget(root.left, k);
-//		
-//		// try again with the right subtree (if it exists)
-//		if (root.right != null)
-//			right = findTarget(root.right, k);
-		
-		// return the disjunction -- because only 1 sum needs to be found
-		return findTarget(root.left, k) || findTarget(root.right, k);
+		// if it never returned true, that means there is NOT a sum that adds up to k
+		return false;
 	}
 	
-	public boolean searchBST(TreeNode root, int val) {
-		if (root == null)
-			return false;
-		
-		if (val < root.val) {
-			if (root.left != null) {
-				return searchBST(root.left, val);
-			} else {
-				return false;
-			}
-		} else if (val > root.val) {
-			if (root.right != null) {
-				return searchBST(root.right, val);
-			} else {
-				return false;
-			}
-		} else {// val == root.val
-			return true;
-		}
+	public void inorder(TreeNode root) {
+		if (root == null) 
+			return;
+		inorder(root.left);
+		nums.add(root.val);
+		inorder(root.right);
 	}
-
+	
 	public class TreeNode {
 		int val;
 		TreeNode left;
