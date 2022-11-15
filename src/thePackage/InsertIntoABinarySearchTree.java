@@ -4,7 +4,7 @@ public class InsertIntoABinarySearchTree {
 	
 	public TreeNode insertIntoBST(TreeNode root, int val) {
 		if (root == null)
-			return val;
+			return new TreeNode(val);
 		
 		if (val < root.val) {
 			if (root.left == null) {
