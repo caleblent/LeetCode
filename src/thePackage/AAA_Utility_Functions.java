@@ -265,6 +265,14 @@ public class AAA_Utility_Functions {
 		return ret;
 	}
 	
+	public static String reverseString(String s) {
+		String result = "";
+		for (int i = 0; i < s.length(); i++) {
+			result = s.charAt(i) + result;
+		}
+		return result;
+	}
+	
 	public static boolean isVowel(char c) {
 		if (c == 'a' ||	c == 'A' ||
 			c == 'e' ||	c == 'E' ||
