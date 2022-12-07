@@ -7,38 +7,48 @@ import java.util.List;
 public class ThreeSum {
 	
 	public List<List<Integer>> threeSum(int[] nums) {
-		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		List<List<Integer>> result = new ArrayList<>();
 		
 		// sort the array
-//		quickSort(nums, 0, nums.length - 1);
 		Arrays.sort(nums);
 		
-		// initialize left and right pointers
-		int L, R;
+		// declare left and right pointers
+		int left, right;
 		
-		for (int i = 0; i < nums.length - 3; i++) {
-			L = i + 1;
-			R = nums.length - 1;
-			while (L < R) {
-				if (nums[i] + nums[L] + nums[R] == 0) { 
-					ArrayList<Integer> temp = new ArrayList<Integer>();
-					temp.add(nums[i]);
-					temp.add(nums[L]);
-					temp.add(nums[R]);
-					temp.sort(null);
-					if (!result.contains(temp))
-						result.add(temp);
+		int i = 0;
+		while (i < nums.length - 2) {
+			// if the number is already positive, adding more positive numbers cannot equal 0
+			if (nums[i] > 0)
+				break;
+			
+			// initialize left and right pointers
+			left = i + 1;
+			right = nums.length - 1;
+			
+			while (left < right) {
+				int sum = nums[i] + nums[left] + nums[right];
+				
+				if (sum == 0)
+					result.add(Arrays.asList(nums[i], nums[left], nums[right]));
+				
+				if (sum <= 0) {
+					while (left+1 < right && nums[left] == nums[left+1]) {
+						left++; 
+					}
+                    left++;
 				}
-				else if (nums[i] + nums[L] + nums[R] < 0) {
-                    L++;
-				}
- 
-                else  if (nums[i] + nums[L] + nums[R] > 0) {
-                    R--;
+                if (sum >= 0) {
+                	while (left < right-1 && nums[right] == nums[right-1]) {
+                		right--; 
+                	}
+                    right--;
                 }
 			}
+			// iterate thru any duplicates
+			while (i+1 < nums.length-2 && nums[i] == nums[i+1])
+				i++; 	
+			i++;
 		}
-		
 		return result;
 	}
 	
