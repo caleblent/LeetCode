@@ -14,7 +14,7 @@ print(var2)
 print(var3)
 
 list4 = [
-    'k', 'E', 'l', 'p', 'I', 'z', 'G', 'B', 'b', 'C', 'P', 'w', 'Y', '6', 'Q', '7', 'P', 'G', 'I', 'C,'
+    'k', 'E', 'l', 'p', 'I', 'z', 'G', 'B', 'b', 'C', 'P', 'w', 'Y', '6', 'Q', '7', 'P', 'G', 'I', 'C',
     '2', 'w', 'D', 'V', 'u', '0', 'L', 'R', 'U', 'F', 'y', 'j', 'P', 'E', 'F', 'D', 'u', 'S', '5', '0', 'z', '0'
 ]
 
@@ -34,5 +34,5 @@ for thing in set4:
 print()
 print()
 
-for i in range(0, 10):
+for i in range(0, len(list4)):
     print(list4[i])
